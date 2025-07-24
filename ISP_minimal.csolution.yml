@@ -1,0 +1,43 @@
+# Copyright (c) 2024-2025 Arm Limited. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+solution:
+  created-for: CMSIS-Toolbox@2.6.0
+  description: ISP_minimal example
+
+  packs:
+    - pack: ARM::CMSIS@>=6.0.0
+    - pack: ARM::CMSIS-Compiler@>=2.0.0
+    - pack: ARM::SSE_320_BSP@>=1.1.0
+
+  cdefault:
+
+  target-types:
+    - type: SSE-320-FVP
+      board: SSE-320
+      device: SSE-320-FVP
+      target-set:
+        - set:
+          images:
+            - project-context: ISP_minimal.Debug
+          debugger:
+            name: AVH-FVP
+            model: set model executable as target-set.debugger.model in csolution.yml
+            config:
+            args: []
+
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: none
+
+    - type: Release
+      debug: off
+      optimize: balanced
+
+  projects:
+    - project: ./ISP_minimal/ISP_minimal.cproject.yml
+
+  output-dirs:
+    cprjdir: ./build/$TargetType$/$Compiler$/$BuildType$/$Project$
+    outdir: ./build/$TargetType$/$Compiler$/$BuildType$/$Project$/outdir

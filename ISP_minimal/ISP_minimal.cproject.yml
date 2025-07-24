@@ -1,0 +1,48 @@
+# Copyright (c) 2024-2025 Arm Limited. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+project:
+  add-path:
+    - ./FreeRTOS
+  packs:
+    - pack: ARM::SSE_320_BSP
+    - pack: ARM::CMSIS-FreeRTOS
+    - pack: ARM::MALIC55
+    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-Compiler
+
+  groups:
+    - group: Documentation
+      files:
+        - file: ./Abstract.txt
+    - group: app
+      files:
+        - file: ./main.c
+        - file: ./isp_demo.c
+        - file: ./hdlcd_helper.c
+        - file: ./app/isp_app.c
+        - file: ./app/acamera_callbacks.c
+    - group: FreeRTOS
+      files:
+        - file: ./FreeRTOS/aws_demo.c
+
+  components:
+    - component: CMSIS:CORE
+    - component: CMSIS Driver:USART
+      instances: 2
+    - component: Device:Definition
+    - component: Device:Native Driver:IO
+    - component: Device:Native Driver:UART
+    - component: Device:Native Driver:HDLCD
+    - component: Device:Startup&C Startup
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDOUT:Custom
+    - component: Device:USART Retarget
+    - component: ARM::RTOS&FreeRTOS:Core&Cortex-M
+    - component: ARM::RTOS&FreeRTOS:Config&FreeRTOS
+    - component: ARM::RTOS&FreeRTOS:Heap&Heap_4
+    - component: ARM::RTOS&FreeRTOS:Timers
+    - component: ARM::Native Driver:MALIC55
+    - component: ARM::Native Driver:MALIC55 Platform HAL&SSE-320 FVP
+    - component: ARM::Native Driver:MALIC55 ACamera Sensor&SSE-320 FVP
+    - component: ARM::Native Driver:MALIC55 ACamera&User
