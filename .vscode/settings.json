@@ -1,0 +1,15 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=/mnt/hdd/huy_workspace/ISP_minimal/out/ISP_minimal/SSE-320-FVP/Debug"
+    ],
+    "files.associations": {
+        "acamera_firmware_config.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "span": "c",
+        "iterator": "c",
+        "vector": "c"
+    }
+}

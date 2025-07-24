@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SSE-320 Bare Metal Debug",
+            "type": "arm-debugger.configdb",
+            "request": "launch",
+            "cdbEntry": "Arm SubSystem FVP::Corstone SSE-320::Bare Metal Debug::Bare Metal Debug::Cortex-M85",
+            "programs": [
+                {
+                    "path": "${command:arm-debugger.getApplicationFile}"
+                }
+            ],
+            "runControl": {
+                "debugFromSymbol": "SystemInit"
+            },
+            "resetAfterConnect": true,
+            "connectExistingDebugger": false,
+            "cdbEntryParams": {
+                "model_params": "-C mps4_board.isp_c55_camera.image_file=/mnt/hdd/huy_workspace/ISP_minimal/ISP_minimal/test.frm -C mps4_board.isp_c55_capture_ds.do_capture=0 -C mps4_board.isp_c55_capture_fr.do_capture=0 -C mps4_board.telnetterminal0.mode=raw"
+            }
+        }
+    ]
+}
